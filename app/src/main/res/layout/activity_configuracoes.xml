@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ConfiguracoesActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbarTop"
@@ -18,15 +18,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
-    <Button
-        android:id="@+id/btnAcessaConf"
+
+    <TextView
+        android:id="@+id/txtConfiguracoes"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Acessar configurações"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="32dp"
+        android:text="Tela de configurações"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@+id/toolbarTop"
-        android:layout_margin="15dp"/>
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>

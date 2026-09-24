@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -31,6 +32,14 @@ public class MainActivity extends AppCompatActivity {
         MaterialToolbar toolbar = findViewById(R.id.toolbarTop);
         setSupportActionBar(toolbar);
 
+        Button btnAcessaConf = findViewById(R.id.btnAcessaConf);
+        btnAcessaConf.setOnClickListener(v ->{
+            Intent intent = new Intent(
+                    MainActivity.this, ConfiguracoesActivity.class
+            );
+            startActivity(intent);
+        });
+
     }
 
     @Override
@@ -43,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         if (item.getItemId() == R.id.menu_config){
-            Toast.makeText(this, "Configurações Selecionadas", Toast.LENGTH_SHORT).show();
+            Intent intent  = new Intent(MainActivity.this, ConfiguracoesActivity.class);
+            startActivity(intent);
             return true;
         }
 

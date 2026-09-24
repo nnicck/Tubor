@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -21,7 +23,7 @@ public class CadastroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_cadastro2);
+        setContentView(R.layout.activity_cadastro);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -30,6 +32,38 @@ public class CadastroActivity extends AppCompatActivity {
 
         MaterialToolbar toolbar = findViewById(R.id.toolbarTop);
         setSupportActionBar(toolbar);
+
+        if(getSupportActionBar() != null){
+            getSupportActionBar()
+                    .setDisplayHomeAsUpEnabled(true);
+        }
+
+        EditText edtChamado = findViewById(R.id.edtChamado);
+        Button btnSalvar = findViewById(R.id.btnSalvar);
+
+        btnSalvar.setOnClickListener(v ->{
+            String chamado = edtChamado
+                    .getText().toString().trim();
+
+            if(chamado.isEmpty()){
+                edtChamado.setError(
+                  "digite a descrição do chamado"
+                );
+
+                return;
+            }
+
+            Toast.makeText(CadastroActivity.this,  "Chamado registrado", Toast.LENGTH_SHORT).show();
+
+            finish();
+        });
+
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 
     @Override

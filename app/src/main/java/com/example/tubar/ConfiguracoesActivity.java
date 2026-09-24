@@ -4,9 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -17,19 +14,18 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
-public class SobreActivity extends AppCompatActivity {
+public class ConfiguracoesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_sobre);
+        setContentView(R.layout.activity_configuracoes);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
         MaterialToolbar toolbar = findViewById(R.id.toolbarTop);
         setSupportActionBar(toolbar);
 
@@ -38,36 +34,6 @@ public class SobreActivity extends AppCompatActivity {
                     .setDisplayHomeAsUpEnabled(true);
         }
 
-        EditText edtNome = findViewById(R.id.edtNome);
-        EditText edtEmail = findViewById(R.id.edtEmail);
-        EditText edtPhone = findViewById(R.id.edtPhone);
-        Button btnEnviar = findViewById(R.id.btnEnviar);
-
-        btnEnviar.setOnClickListener(v ->{
-            String nome = edtNome.getText().toString().trim();
-
-            String email = edtEmail.getText().toString().trim();
-
-            String phone = edtPhone.getText().toString().trim();
-
-            if(nome.isEmpty()){
-                edtNome.setError("Digite o nome");
-                return;
-            }
-
-            if(email.isEmpty()){
-                edtEmail.setError("Digite seu email");
-                return;
-            }
-
-            if(phone.isEmpty()){
-                edtPhone.setError("Diite seu número de telefone");
-                return;
-            }
-
-            Toast.makeText(SobreActivity.this,  "Form enviado", Toast.LENGTH_SHORT).show();
-            finish();
-        });
     }
 
     @Override
@@ -86,20 +52,20 @@ public class SobreActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         if (item.getItemId() == R.id.menu_config){
-            Intent intent  = new Intent(SobreActivity.this, ConfiguracoesActivity.class);
+            Intent intent  = new Intent(ConfiguracoesActivity.this, ConfiguracoesActivity.class);
             startActivity(intent);
             return true;
         }
 
         if(item.getItemId() == R.id.menu_sobre){
-            Intent intent = new Intent(SobreActivity.this, SobreActivity.class);
+            Intent intent = new Intent(ConfiguracoesActivity.this, SobreActivity.class);
             startActivity(intent);
             return true;
 
         }
 
         if(item.getItemId() == R.id.menu_cadastro){
-            Intent intent = new Intent(SobreActivity.this, CadastroActivity.class);
+            Intent intent = new Intent(ConfiguracoesActivity.this, CadastroActivity.class);
             startActivity(intent);
             return true;
 
